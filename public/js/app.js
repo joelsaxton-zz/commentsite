@@ -719,37 +719,44 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 //
 //
 //
+//
+//
+//
+//
+//
+//
+
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
-  name: 'app',
-  data: function data() {
-    return {
-      comments: []
-    };
-  },
-  mounted: function mounted() {
-    //this.loadData()
-  },
+    name: 'app',
+    data: function data() {
+        return {
+            comments: []
+        };
+    },
+    mounted: function mounted() {
+        //this.loadData()
+    },
 
-  methods: {
-    loadData: function loadData() {
-      var _this = this;
+    methods: {
+        loadData: function loadData() {
+            var _this = this;
 
-      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('api.json').then(function (response) {
-        var _comments;
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('api.json').then(function (response) {
+                var _comments;
 
-        console.log(response);
-        var comments = response.data.comments;
+                console.log(response);
+                var comments = response.data.comments;
 
-        console.log(comments);
-        // empty previous records
-        _this.comments.length = 0;
-        // add new messages
-        (_comments = _this.comments).push.apply(_comments, _toConsumableArray(comments));
-      });
+                console.log(comments);
+                // empty previous records
+                _this.comments.length = 0;
+                // add new messages
+                (_comments = _this.comments).push.apply(_comments, _toConsumableArray(comments));
+            });
+        }
     }
-  }
 });
 
 /***/ }),
@@ -12292,7 +12299,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 var disposed = false
 function injectStyle (context) {
   if (disposed) return
-  __webpack_require__(46)
+  __webpack_require__(16)
 }
 /* script */
 
@@ -12339,8 +12346,47 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 16 */,
-/* 17 */,
+/* 16 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(17);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var add = __webpack_require__(19).default
+var update = add("0e627ace", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"optionsId\":\"0\",\"vue\":true,\"scoped\":false,\"sourceMap\":false}!../../../../node_modules/sass-loader/lib/loader.js!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./App.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"optionsId\":\"0\",\"vue\":true,\"scoped\":false,\"sourceMap\":false}!../../../../node_modules/sass-loader/lib/loader.js!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./App.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 17 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(18)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n#myApplication {\n  text-align: center;\n  color: #2c3e50;\n  margin-top: 60px;\n}\n#myApplication p {\n    color: red;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
 /* 18 */
 /***/ (function(module, exports) {
 
@@ -13591,38 +13637,53 @@ var render = function() {
   return _c("div", { attrs: { id: "myApplication" } }, [
     _c("h1", [_vm._v("Game of Thrones Comment Site")]),
     _vm._v(" "),
-    _c("p", [_vm._v("little text behind the title")]),
-    _vm._v(" "),
     _c(
       "ul",
-      [
-        _vm._l(_vm.comments, function(comment, index) {
-          return _c("li", { key: index }, [
-            _vm._v(
-              "\n  " +
-                _vm._s(comment.user.first_name + " " + comment.user.last_name) +
-                ": " +
-                _vm._s(comment.comment_text) +
-                "\n  "
-            )
-          ])
-        }),
-        _vm._v(" "),
-        _vm._l(_vm.comment.replies, function(subcomment, index) {
-          return _c("li", { key: index }, [
-            _vm._v(
-              "\n      " +
-                _vm._s(
-                  subcomment.user.first_name + " " + subcomment.user.last_name
-                ) +
-                ": " +
-                _vm._s(subcomment.comment_text) +
-                "\n      "
-            )
-          ])
-        })
-      ],
-      2
+      _vm._l(_vm.comments, function(comment1, index1) {
+        return _c("li", { key: index1 }, [
+          _vm._v(
+            "\n            " +
+              _vm._s(comment1.user.first_name + " " + comment1.user.last_name) +
+              ": " +
+              _vm._s(comment1.comment_text) +
+              "\n            "
+          ),
+          _c(
+            "ul",
+            _vm._l(comment1.replies, function(comment2, index2) {
+              return _c("li", { key: index2 }, [
+                _vm._v(
+                  "\n                    " +
+                    _vm._s(
+                      comment2.user.first_name + " " + comment2.user.last_name
+                    ) +
+                    ": " +
+                    _vm._s(comment2.comment_text) +
+                    "\n                    "
+                ),
+                _c(
+                  "ul",
+                  _vm._l(comment2.replies, function(comment3, index3) {
+                    return _c("li", { key: index3 }, [
+                      _vm._v(
+                        "\n                            " +
+                          _vm._s(
+                            comment3.user.first_name +
+                              " " +
+                              comment3.user.last_name
+                          ) +
+                          ": " +
+                          _vm._s(comment3.comment_text) +
+                          "\n                        "
+                      )
+                    ])
+                  })
+                )
+              ])
+            })
+          )
+        ])
+      })
     ),
     _vm._v(" "),
     _c(
@@ -13762,50 +13823,6 @@ function normalizeComponent (
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 43 */,
-/* 44 */,
-/* 45 */,
-/* 46 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(47);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var add = __webpack_require__(19).default
-var update = add("0e627ace", content, false, {});
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"optionsId\":\"0\",\"vue\":true,\"scoped\":false,\"sourceMap\":false}!../../../../node_modules/sass-loader/lib/loader.js!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./App.vue", function() {
-     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"optionsId\":\"0\",\"vue\":true,\"scoped\":false,\"sourceMap\":false}!../../../../node_modules/sass-loader/lib/loader.js!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./App.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 47 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(18)(false);
-// imports
-
-
-// module
-exports.push([module.i, "\n#myApplication {\n  text-align: center;\n  color: #2c3e50;\n  margin-top: 60px;\n}\n#myApplication p {\n    color: red;\n}\n", ""]);
-
-// exports
-
 
 /***/ })
 /******/ ]);
